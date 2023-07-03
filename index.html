@@ -1,30 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
-
-    <style>
-        body {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-        }
-      </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 
 
-    <script type="module" src="./index.js"></script>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    canvas {
+      width: 100%;
+      image-rendering: pixelated;
+    }
+  </style>
+
+
+  <script type="module" src="./index.js"></script>
 
 </head>
+
 <body>
-    <canvas id="game-of-life-canvas"></pre>
+  <div style="display: grid; align-items: center; gap: 10px;">
+    <div style="width: 100px; height: 100px;">
+      <canvas id="qr-code"></canvas>
+    </div>
+    <input id="qr-text" value="Hello World">
+  </div>
 </body>
+
 </html>
