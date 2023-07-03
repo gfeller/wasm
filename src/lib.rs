@@ -1,7 +1,6 @@
 mod utils;
 
 use wasm_bindgen::prelude::*;
-
  
 // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
 // allocator.
@@ -31,7 +30,7 @@ pub struct SampleQrCode {
 impl SampleQrCode {
     pub fn new(value: &str) -> SampleQrCode {
 
-        console_error_panic_hook::set_once();
+        utils::set_panic_hook();
 
 
         let qr_code = qr_code::QrCode::new(value).unwrap();
@@ -40,11 +39,7 @@ impl SampleQrCode {
         let width: u16 = qr_code.width() as u16;
         let size: usize = (height * width * 4).into();
 
-
-        let mut buffer: Vec<u8> = Vec::new();
-        buffer.resize(size, 0);
-        
-         // (0..size).collect::<Vec<u8>>();
+        let mut buffer: Vec<u8> = vec![0; size];
        
         let mut pos = 0;
         for pixel_set in qr_code.into_colors() {
