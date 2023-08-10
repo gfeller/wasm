@@ -8,40 +8,34 @@
   </head>
 
 
-  <script type="module">
-     
+  <script type="module">     
     const input = document.querySelector("input");
     const output = document.querySelector("output");
 
     const module = await fetch("to-upper.wasm")
        .then((response) => response.arrayBuffer())
        .then((bytes) => {
-         return new WebAssembly.Module(bytes); // module
-         return mod;
-         const instance = new WebAssembly.Instance(mod, importObject); // first instance
-         instance.exports.exported_func();
-         const instance2 = new WebAssembly.Instance(mod, importObject2); // second instance
-         instance2.exports.exported_func();
+          return new WebAssembly.Module(bytes); // module
+          return mod;
        });
 
       
     const toUpper = (value) => {
-
       const memory = new WebAssembly.Memory({ initial: 1,   maximum: 1   }); 
-      const instance = new WebAssembly.Instance(module, { js: { mem: memory } }); 
+      const instance = new WebAssembly.Instance(module, { js: { mem: memory } });  
+
+      // TODO fill memory and call web assembly 
 
 
-      const uInt8Array = new Uint8Array(memory.buffer);
-      const stringEncoded = new TextEncoder().encodeInto(value, uInt8Array);
+
+
+
       
-      instance.exports.upper(0, value.length);
+      const result = value;
 
-      const result = new TextDecoder().decode(memory.buffer.slice(0, value.length))
       console.log(result);
-
       output.value = result;
     }
-
 
     input.addEventListener("input", (event) => {
         toUpper(event.target.value);    
@@ -51,16 +45,11 @@
    </script>
 
   <body>
-
     <div>
       <input value="Hello World">
     </div>
     <div>
       Result: <output/>
-
-
     </div>
- 
   </body>
-
 </html
