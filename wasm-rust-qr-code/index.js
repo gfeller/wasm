@@ -11,12 +11,12 @@ function printQrCode(elem, memory, imagePointer, width, height) {
   ctx.putImageData(imageData, 0, 0);
 }
 
-const module = await init("./pkg/wasm_demo_bg.wasm");
+const instance = await init("./pkg/wasm_demo_bg.wasm");
 
 const generateQrCode = async (value) => {
   debugger;
   const qrCode = SampleQrCode.new(value || "Hello World"); 
-  printQrCode( document.getElementById("qr-code"), module.memory.buffer, qrCode.buffer(), qrCode.width(), qrCode.height());
+  printQrCode( document.getElementById("qr-code"), instance.memory.buffer, qrCode.buffer(), qrCode.width(), qrCode.height());
 };
 
 
