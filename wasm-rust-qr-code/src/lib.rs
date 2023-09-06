@@ -57,7 +57,7 @@ impl SampleQrCode {
         self.height
     }
 
-    pub fn buffer(&self) -> *const u8 {
+    pub fn buffer_pointer(&self) -> *const u8 {
         self.buffer.as_ptr()
     }
 }

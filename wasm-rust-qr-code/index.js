@@ -16,7 +16,7 @@ const instance = await init("./pkg/wasm_demo_bg.wasm");
 const generateQrCode = async (value) => {
   debugger;
   const qrCode = SampleQrCode.new(value || "Hello World"); 
-  printQrCode( document.getElementById("qr-code"), instance.memory.buffer, qrCode.buffer(), qrCode.width(), qrCode.height());
+  printQrCode( document.getElementById("qr-code"), instance.memory.buffer, qrCode.buffer_pointer(), qrCode.width(), qrCode.height());
 };
 
 
