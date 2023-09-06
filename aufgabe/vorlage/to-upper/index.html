@@ -1,0 +1,55 @@
+<!doctype html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>WASM To Upper</title>    
+  </head>
+
+
+  <script type="module">     
+    const input = document.querySelector("input");
+    const output = document.querySelector("output");
+
+    const module = await fetch("to-upper.wasm")
+       .then((response) => response.arrayBuffer())
+       .then((bytes) => {
+          return new WebAssembly.Module(bytes); // module
+          return mod;
+       });
+
+      
+    const toUpper = (value) => {
+      const memory = new WebAssembly.Memory({ initial: 1,   maximum: 1   }); 
+      const instance = new WebAssembly.Instance(module, { js: { mem: memory } });  
+
+      // TODO fill memory and call web assembly 
+
+
+
+
+
+      
+      const result = value;
+
+      console.log(result);
+      output.value = result;
+    }
+
+    input.addEventListener("input", (event) => {
+        toUpper(event.target.value);    
+     })     
+
+     toUpper(input.value);     
+   </script>
+
+  <body>
+    <div>
+      <input value="Hello World">
+    </div>
+    <div>
+      Result: <output/>
+    </div>
+  </body>
+</html

@@ -16,7 +16,6 @@ pub struct SampleQrCode {
 }
 
 
-
 #[wasm_bindgen]
 impl SampleQrCode {
     pub fn new(value: &str) -> SampleQrCode {
